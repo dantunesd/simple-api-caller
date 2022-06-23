@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-api-caller
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: simple-api-caller
+  template:
+    metadata:
+      labels:
+        app: simple-api-caller
+    spec:
+      containers:
+        - name: simple-api-caller
+          image: dantunes/simple-api-caller
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 10Mi
+              cpu: 2m
+            limits:
+              memory: 10Mi
+              cpu: 2m
+
+        
+    
